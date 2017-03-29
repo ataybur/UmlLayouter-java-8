@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><XMI xmlns:UML="org.omg/UML/1.4" timestamp="Fri May 24 14:22:14 EEST 2013" xmi.version="1.2">
+  <XMI.header>    <XMI.documentation>
+      <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
+      <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
+    </XMI.documentation>
+    <XMI.metamodel xmi.name="UML" xmi.version="1.4"/></XMI.header>
+  <XMI.content>
+    <UML:Model isAbstract="false" isLeaf="false" isRoot="false" isSpecification="false" name="untitledModel" xmi.id="-87--2--92-35-1d527c8d:13ed63aad56:-8000:0000000000000865">
+      <UML:Namespace.ownedElement>
+        <UML:Class isAbstract="false" isActive="false" isLeaf="false" isRoot="false" isSpecification="false" name="A" visibility="public" xmi.id="-87--2--92-35-1d527c8d:13ed63aad56:-8000:0000000000000866"/>
+        <UML:Class isAbstract="false" isActive="false" isLeaf="false" isRoot="false" isSpecification="false" name="B" visibility="public" xmi.id="-87--2--92-35-1d527c8d:13ed63aad56:-8000:0000000000000867"/>
+        <UML:Class isAbstract="false" isActive="false" isLeaf="false" isRoot="false" isSpecification="false" name="C" visibility="public" xmi.id="-87--2--92-35-1d527c8d:13ed63aad56:-8000:0000000000000868">
+          <UML:GeneralizableElement.generalization>
+            <UML:Generalization xmi.idref="-87--2--92-35-1d527c8d:13ed63aad56:-8000:000000000000086A"/>
+          </UML:GeneralizableElement.generalization>
+        </UML:Class>
+        <UML:Class isAbstract="false" isActive="false" isLeaf="false" isRoot="false" isSpecification="false" name="D" visibility="public" xmi.id="-87--2--92-35-1d527c8d:13ed63aad56:-8000:0000000000000869">
+          <UML:GeneralizableElement.generalization>
+            <UML:Generalization xmi.idref="-87--2--92-35-1d527c8d:13ed63aad56:-8000:000000000000086C"/>
+          </UML:GeneralizableElement.generalization>
+        </UML:Class>
+        <UML:Generalization isSpecification="false" xmi.id="-87--2--92-35-1d527c8d:13ed63aad56:-8000:000000000000086A">
+          <UML:Generalization.child>
+            <UML:Class xmi.idref="-87--2--92-35-1d527c8d:13ed63aad56:-8000:0000000000000868"/>
+          </UML:Generalization.child>
+          <UML:Generalization.parent>
+            <UML:Class xmi.idref="-87--2--92-35-1d527c8d:13ed63aad56:-8000:0000000000000866"/>
+          </UML:Generalization.parent>
+        </UML:Generalization>
+        <UML:Generalization isSpecification="false" xmi.id="-87--2--92-35-1d527c8d:13ed63aad56:-8000:000000000000086C">
+          <UML:Generalization.child>
+            <UML:Class xmi.idref="-87--2--92-35-1d527c8d:13ed63aad56:-8000:0000000000000869"/>
+          </UML:Generalization.child>
+          <UML:Generalization.parent>
+            <UML:Class xmi.idref="-87--2--92-35-1d527c8d:13ed63aad56:-8000:0000000000000866"/>
+          </UML:Generalization.parent>
+        </UML:Generalization>
+        <UML:Association isAbstract="false" isLeaf="false" isRoot="false" isSpecification="false" name="" xmi.id="-87--2--92-35-1d527c8d:13ed63aad56:-8000:000000000000086D">
+          <UML:Association.connection>
+            <UML:AssociationEnd aggregation="none" changeability="changeable" isNavigable="false" isSpecification="false" ordering="unordered" targetScope="instance" visibility="public" xmi.id="-87--2--92-35-1d527c8d:13ed63aad56:-8000:000000000000086E">
+              <UML:AssociationEnd.participant>
+                <UML:Class xmi.idref="-87--2--92-35-1d527c8d:13ed63aad56:-8000:0000000000000866"/>
+              </UML:AssociationEnd.participant>
+            </UML:AssociationEnd>
+            <UML:AssociationEnd aggregation="none" changeability="changeable" isNavigable="true" isSpecification="false" ordering="unordered" targetScope="instance" visibility="public" xmi.id="-87--2--92-35-1d527c8d:13ed63aad56:-8000:000000000000086F">
+              <UML:AssociationEnd.participant>
+                <UML:Class xmi.idref="-87--2--92-35-1d527c8d:13ed63aad56:-8000:0000000000000867"/>
+              </UML:AssociationEnd.participant>
+            </UML:AssociationEnd>
+          </UML:Association.connection>
+        </UML:Association>
+      </UML:Namespace.ownedElement>
+    </UML:Model>
+  </XMI.content>
+</XMI>

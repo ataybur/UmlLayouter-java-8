@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><XMI xmlns:UML="org.omg/UML/1.4" timestamp="Tue May 14 21:39:27 EEST 2013" xmi.version="1.2">
+  <XMI.header>    <XMI.documentation>
+      <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
+      <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
+    </XMI.documentation>
+    <XMI.metamodel xmi.name="UML" xmi.version="1.4"/></XMI.header>
+  <XMI.content>
+    <UML:Model isAbstract="false" isLeaf="false" isRoot="false" isSpecification="false" name="untitledModel" xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000B36">
+      <UML:Namespace.ownedElement>
+        <UML:Class isAbstract="false" isActive="false" isLeaf="false" isRoot="false" isSpecification="false" name="A" visibility="public" xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CDE"/>
+        <UML:Class isAbstract="false" isActive="false" isLeaf="false" isRoot="false" isSpecification="false" name="B" visibility="public" xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CDF">
+          <UML:GeneralizableElement.generalization>
+            <UML:Generalization xmi.idref="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CE2"/>
+          </UML:GeneralizableElement.generalization>
+        </UML:Class>
+        <UML:Class isAbstract="false" isActive="false" isLeaf="false" isRoot="false" isSpecification="false" name="C" visibility="public" xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CE0">
+          <UML:GeneralizableElement.generalization>
+            <UML:Generalization xmi.idref="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CE1"/>
+          </UML:GeneralizableElement.generalization>
+        </UML:Class>
+        <UML:Generalization isSpecification="false" xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CE1">
+          <UML:Generalization.child>
+            <UML:Class xmi.idref="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CE0"/>
+          </UML:Generalization.child>
+          <UML:Generalization.parent>
+            <UML:Class xmi.idref="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CDE"/>
+          </UML:Generalization.parent>
+        </UML:Generalization>
+        <UML:Generalization isSpecification="false" xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CE2">
+          <UML:Generalization.child>
+            <UML:Class xmi.idref="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CDF"/>
+          </UML:Generalization.child>
+          <UML:Generalization.parent>
+            <UML:Class xmi.idref="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CDE"/>
+          </UML:Generalization.parent>
+        </UML:Generalization>
+        <UML:Class isAbstract="false" isActive="false" isLeaf="false" isRoot="false" isSpecification="false" name="D" visibility="public" xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CE3"/>
+        <UML:Class isAbstract="false" isActive="false" isLeaf="false" isRoot="false" isSpecification="false" name="E" visibility="public" xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CE4">
+          <UML:GeneralizableElement.generalization>
+            <UML:Generalization xmi.idref="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CE8"/>
+          </UML:GeneralizableElement.generalization>
+        </UML:Class>
+        <UML:Class isAbstract="false" isActive="false" isLeaf="false" isRoot="false" isSpecification="false" name="F" visibility="public" xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CE5">
+          <UML:GeneralizableElement.generalization>
+            <UML:Generalization xmi.idref="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CE9"/>
+          </UML:GeneralizableElement.generalization>
+        </UML:Class>
+        <UML:Class isAbstract="false" isActive="false" isLeaf="false" isRoot="false" isSpecification="false" name="G" visibility="public" xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CE6">
+          <UML:GeneralizableElement.generalization>
+            <UML:Generalization xmi.idref="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CEA"/>
+          </UML:GeneralizableElement.generalization>
+        </UML:Class>
+        <UML:Class isAbstract="false" isActive="false" isLeaf="false" isRoot="false" isSpecification="false" name="H" visibility="public" xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CE7">
+          <UML:GeneralizableElement.generalization>
+            <UML:Generalization xmi.idref="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CEB"/>
+          </UML:GeneralizableElement.generalization>
+        </UML:Class>
+        <UML:Generalization isSpecification="false" xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CE8">
+          <UML:Generalization.child>
+            <UML:Class xmi.idref="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CE4"/>
+          </UML:Generalization.child>
+          <UML:Generalization.parent>
+            <UML:Class xmi.idref="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CE3"/>
+          </UML:Generalization.parent>
+        </UML:Generalization>
+        <UML:Generalization isSpecification="false" xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CE9">
+          <UML:Generalization.child>
+            <UML:Class xmi.idref="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CE5"/>
+          </UML:Generalization.child>
+          <UML:Generalization.parent>
+            <UML:Class xmi.idref="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CE3"/>
+          </UML:Generalization.parent>
+        </UML:Generalization>
+        <UML:Generalization isSpecification="false" xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CEA">
+          <UML:Generalization.child>
+            <UML:Class xmi.idref="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CE6"/>
+          </UML:Generalization.child>
+          <UML:Generalization.parent>
+            <UML:Class xmi.idref="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CE4"/>
+          </UML:Generalization.parent>
+        </UML:Generalization>
+        <UML:Generalization isSpecification="false" xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CEB">
+          <UML:Generalization.child>
+            <UML:Class xmi.idref="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CE7"/>
+          </UML:Generalization.child>
+          <UML:Generalization.parent>
+            <UML:Class xmi.idref="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CE4"/>
+          </UML:Generalization.parent>
+        </UML:Generalization>
+        <UML:Association isAbstract="false" isLeaf="false" isRoot="false" isSpecification="false" name="" xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CEC">
+          <UML:Association.connection>
+            <UML:AssociationEnd aggregation="none" changeability="changeable" isNavigable="false" isSpecification="false" ordering="unordered" targetScope="instance" visibility="public" xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CED">
+              <UML:AssociationEnd.multiplicity>
+                <UML:Multiplicity xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CEE">
+                  <UML:Multiplicity.range>
+                    <UML:MultiplicityRange lower="1" upper="1" xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CEF"/>
+                  </UML:Multiplicity.range>
+                </UML:Multiplicity>
+              </UML:AssociationEnd.multiplicity>
+              <UML:AssociationEnd.participant>
+                <UML:Class xmi.idref="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CDE"/>
+              </UML:AssociationEnd.participant>
+            </UML:AssociationEnd>
+            <UML:AssociationEnd aggregation="none" changeability="changeable" isNavigable="true" isSpecification="false" ordering="unordered" targetScope="instance" visibility="public" xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CF0">
+              <UML:AssociationEnd.multiplicity>
+                <UML:Multiplicity xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CF1">
+                  <UML:Multiplicity.range>
+                    <UML:MultiplicityRange lower="1" upper="1" xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CF2"/>
+                  </UML:Multiplicity.range>
+                </UML:Multiplicity>
+              </UML:AssociationEnd.multiplicity>
+              <UML:AssociationEnd.participant>
+                <UML:Class xmi.idref="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CE3"/>
+              </UML:AssociationEnd.participant>
+            </UML:AssociationEnd>
+          </UML:Association.connection>
+        </UML:Association>
+        <UML:Association isAbstract="false" isLeaf="false" isRoot="false" isSpecification="false" name="" xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CF3">
+          <UML:Association.connection>
+            <UML:AssociationEnd aggregation="none" changeability="changeable" isNavigable="false" isSpecification="false" ordering="unordered" targetScope="instance" visibility="public" xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CF4">
+              <UML:AssociationEnd.multiplicity>
+                <UML:Multiplicity xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CF5">
+                  <UML:Multiplicity.range>
+                    <UML:MultiplicityRange lower="1" upper="1" xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CF6"/>
+                  </UML:Multiplicity.range>
+                </UML:Multiplicity>
+              </UML:AssociationEnd.multiplicity>
+              <UML:AssociationEnd.participant>
+                <UML:Class xmi.idref="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CE5"/>
+              </UML:AssociationEnd.participant>
+            </UML:AssociationEnd>
+            <UML:AssociationEnd aggregation="none" changeability="changeable" isNavigable="true" isSpecification="false" ordering="unordered" targetScope="instance" visibility="public" xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CF7">
+              <UML:AssociationEnd.multiplicity>
+                <UML:Multiplicity xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CF8">
+                  <UML:Multiplicity.range>
+                    <UML:MultiplicityRange lower="1" upper="1" xmi.id="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CF9"/>
+                  </UML:Multiplicity.range>
+                </UML:Multiplicity>
+              </UML:AssociationEnd.multiplicity>
+              <UML:AssociationEnd.participant>
+                <UML:Class xmi.idref="127-0-1-1--6d8c123:13e4571ccb8:-8000:0000000000000CE3"/>
+              </UML:AssociationEnd.participant>
+            </UML:AssociationEnd>
+          </UML:Association.connection>
+        </UML:Association>
+      </UML:Namespace.ownedElement>
+    </UML:Model>
+  </XMI.content>
+</XMI>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:y="http://www.yworks.com/xml/graphml" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns      http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+<graph id="-87--2--92-35-36dcc609:13eaebdcd21:-8000:0000000000000D9A" edgedefault="undirected">
+      
+        
+      
+      
+        
+        <node id="A" name="A"/>
+        <node id="C" name="C"/>
+        <node id="B" name="B"/>
+        
+          
+            
+          
+          
+            
+          
+        
+        
+          
+            
+          
+          
+            
+          
+        
+      
+    </graph>
+</graphml>

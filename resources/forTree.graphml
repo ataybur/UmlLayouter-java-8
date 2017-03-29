@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:y="http://www.yworks.com/xml/graphml" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns      http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+<graph id="-87--2-14--95-5af9b7e1:13c5a565ed7:-8000:0000000000000961" edgedefault="undirected">
+      
+        <node id="A" name="A"/>
+        <node id="F" name="F"/>
+        <node id="B" name="B"/>
+        <node id="G" name="G"/>
+        <edge id="-87--2-14--95-5af9b7e1:13c5a565ed7:-8000:0000000000000966" directed="true" source="A" target="F"/>
+        <edge id="-87--2-14--95-5af9b7e1:13c5a565ed7:-8000:0000000000000969" directed="true" source="A" target="B"/>
+        <edge id="-87--2-14--95-5af9b7e1:13c5a565ed7:-8000:000000000000096C" directed="true" source="F" target="G"/>
+        <node id="C" name="C"/>
+        <edge id="-87--2-14--95-5af9b7e1:13c5a565ed7:-8000:0000000000000970" directed="true" source="B" target="C"/>
+        <node id="E" name="E"/>
+        <node id="D" name="D"/>
+        
+          
+            
+          
+          
+            
+          
+        
+        <edge id="-87--2-14--95-5af9b7e1:13c5a565ed7:-8000:0000000000000976" directed="true" source="B" target="E"/>
+      
+    </graph>
+</graphml>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><XMI xmlns:UML="org.omg/UML/1.4" timestamp="Thu May 16 22:13:43 EEST 2013" xmi.version="1.2">
+  <XMI.header>    <XMI.documentation>
+      <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
+      <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
+    </XMI.documentation>
+    <XMI.metamodel xmi.name="UML" xmi.version="1.4"/></XMI.header>
+  <XMI.content>
+    <UML:Model isAbstract="false" isLeaf="false" isRoot="false" isSpecification="false" name="untitledProfile" xmi.id="-87--2--92-35-36dcc609:13eaebdcd21:-8000:0000000000000D9A">
+      <UML:ModelElement.stereotype>
+        <UML:Stereotype xmi.idref="-87--2--92-35-36dcc609:13eaebdcd21:-8000:0000000000000D9B"/>
+      </UML:ModelElement.stereotype>
+      <UML:Namespace.ownedElement>
+        <UML:Stereotype isAbstract="false" isLeaf="false" isRoot="false" isSpecification="false" name="profile" xmi.id="-87--2--92-35-36dcc609:13eaebdcd21:-8000:0000000000000D9B"/>
+        <UML:Class isAbstract="false" isActive="false" isLeaf="false" isRoot="false" isSpecification="false" name="A" visibility="public" xmi.id="-87--2--92-35-36dcc609:13eaebdcd21:-8000:0000000000000D9C"/>
+        <UML:Class isAbstract="false" isActive="false" isLeaf="false" isRoot="false" isSpecification="false" name="C" visibility="public" xmi.id="-87--2--92-35-36dcc609:13eaebdcd21:-8000:0000000000000D9D">
+          <UML:GeneralizableElement.generalization>
+            <UML:Generalization xmi.idref="-87--2--92-35-36dcc609:13eaebdcd21:-8000:0000000000000DA0"/>
+          </UML:GeneralizableElement.generalization>
+        </UML:Class>
+        <UML:Class isAbstract="false" isActive="false" isLeaf="false" isRoot="false" isSpecification="false" name="B" visibility="public" xmi.id="-87--2--92-35-36dcc609:13eaebdcd21:-8000:0000000000000D9E">
+          <UML:GeneralizableElement.generalization>
+            <UML:Generalization xmi.idref="-87--2--92-35-36dcc609:13eaebdcd21:-8000:0000000000000D9F"/>
+          </UML:GeneralizableElement.generalization>
+        </UML:Class>
+        <UML:Generalization isSpecification="false" xmi.id="-87--2--92-35-36dcc609:13eaebdcd21:-8000:0000000000000D9F">
+          <UML:Generalization.child>
+            <UML:Class xmi.idref="-87--2--92-35-36dcc609:13eaebdcd21:-8000:0000000000000D9E"/>
+          </UML:Generalization.child>
+          <UML:Generalization.parent>
+            <UML:Class xmi.idref="-87--2--92-35-36dcc609:13eaebdcd21:-8000:0000000000000D9C"/>
+          </UML:Generalization.parent>
+        </UML:Generalization>
+        <UML:Generalization isSpecification="false" xmi.id="-87--2--92-35-36dcc609:13eaebdcd21:-8000:0000000000000DA0">
+          <UML:Generalization.child>
+            <UML:Class xmi.idref="-87--2--92-35-36dcc609:13eaebdcd21:-8000:0000000000000D9D"/>
+          </UML:Generalization.child>
+          <UML:Generalization.parent>
+            <UML:Class xmi.idref="-87--2--92-35-36dcc609:13eaebdcd21:-8000:0000000000000D9C"/>
+          </UML:Generalization.parent>
+        </UML:Generalization>
+      </UML:Namespace.ownedElement>
+    </UML:Model>
+  </XMI.content>
+</XMI>
