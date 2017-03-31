@@ -15,12 +15,13 @@ import com.ataybur.umlLayouter.service.gui.main.GuiMain;
 public class TermProject {
 
     /**
-     * @param args the command line arguments
+     * @param args
+     *            the command line arguments
      */
     public static void main(String[] args) {
-        JFrame world;
-        world = new GuiMain().application();
-        world.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        world.setVisible(true);
+	JFrame world;
+	world = new GuiMain().application();
+	world.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	world.setVisible(true);
     }
 }

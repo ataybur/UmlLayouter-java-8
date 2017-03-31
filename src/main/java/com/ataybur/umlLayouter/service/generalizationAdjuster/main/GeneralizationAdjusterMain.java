@@ -11,8 +11,8 @@ import com.ataybur.umlLayouter.service.generalizationAdjuster.service.Generaliza
  *
  * @author atay
  */
-public class GeneralizationAdjusterMain extends GeneralizationAdjusterService{
+public class GeneralizationAdjusterMain extends GeneralizationAdjusterService {
     public void doLayoutForGeneralizedEdges(Graph graph) {
-        super.doLayoutForGeneralizedEdges(graph);
+	super.doLayoutForGeneralizedEdges(graph);
     }
 }

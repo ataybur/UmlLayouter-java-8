@@ -28,38 +28,38 @@ import com.ataybur.umlLayouter.util.Utils;
 abstract public class XmiTransformerService {
 
     protected Graph createGraph(String graphFileName) {
-        try {
-            Graph newGraph = new Graph();
-            newGraph = fillGraphByXSLT(newGraph, graphFileName, EdgeRelation.HIERARCHICAL);
-            newGraph = fillGraphByXSLT(newGraph, graphFileName, EdgeRelation.ASSOCIATION);
-            newGraph = adjustVertexDegree(newGraph);
-            return newGraph;
-        } catch (TransformerConfigurationException ex) {
-            Logger.getLogger(XmiTransformerService.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (TransformerException ex) {
-            Logger.getLogger(XmiTransformerService.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ParserConfigurationException ex) {
-            Logger.getLogger(XmiTransformerService.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SAXException ex) {
-            Logger.getLogger(XmiTransformerService.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(XmiTransformerService.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
+	try {
+	    Graph newGraph = new Graph();
+	    newGraph = fillGraphByXSLT(newGraph, graphFileName, EdgeRelation.HIERARCHICAL);
+	    newGraph = fillGraphByXSLT(newGraph, graphFileName, EdgeRelation.ASSOCIATION);
+	    newGraph = adjustVertexDegree(newGraph);
+	    return newGraph;
+	} catch (TransformerConfigurationException ex) {
+	    Logger.getLogger(XmiTransformerService.class.getName()).log(Level.SEVERE, null, ex);
+	} catch (TransformerException ex) {
+	    Logger.getLogger(XmiTransformerService.class.getName()).log(Level.SEVERE, null, ex);
+	} catch (ParserConfigurationException ex) {
+	    Logger.getLogger(XmiTransformerService.class.getName()).log(Level.SEVERE, null, ex);
+	} catch (SAXException ex) {
+	    Logger.getLogger(XmiTransformerService.class.getName()).log(Level.SEVERE, null, ex);
+	} catch (IOException ex) {
+	    Logger.getLogger(XmiTransformerService.class.getName()).log(Level.SEVERE, null, ex);
+	}
+	return null;
     }
 
     private Graph fillGraphByXSLT(Graph newGraph, String graphFileName, EdgeRelation edgeRelation) throws TransformerConfigurationException, TransformerException, ParserConfigurationException, SAXException, IOException {
-        String filename = ProjectConstants.XSLT_PATH+edgeRelation.getXsltFileName();
-        GraphMLReaderMain graphMLReaderMain = new GraphMLReaderMain();
-        filename = graphMLReaderMain.transform(graphFileName, filename);
-        newGraph = graphMLReaderMain.readGraphml(newGraph, filename, edgeRelation);
-        return newGraph;
+	String filename = ProjectConstants.XSLT_PATH + edgeRelation.getXsltFileName();
+	GraphMLReaderMain graphMLReaderMain = new GraphMLReaderMain();
+	filename = graphMLReaderMain.transform(graphFileName, filename);
+	newGraph = graphMLReaderMain.readGraphml(newGraph, filename, edgeRelation);
+	return newGraph;
     }
 
     private Graph adjustVertexDegree(Graph graph) {
-        for (Vertex vertex : graph.getVertexList()) {
-            vertex.setDegree(Utils.returnAdjacentStringList(graph.getEdgeList(), vertex).size());
-        }
-        return graph;
+	for (Vertex vertex : graph.getVertexList()) {
+	    vertex.setDegree(Utils.returnAdjacentStringList(graph.getEdgeList(), vertex).size());
+	}
+	return graph;
     }
 }

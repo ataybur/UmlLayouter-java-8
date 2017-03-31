@@ -11,8 +11,8 @@ import com.ataybur.umlLayouter.service.graphDrawer.service.GraphDrawerService;
  *
  * @author atay
  */
-public class GraphDrawerMain extends GraphDrawerService{
-    public Graph drawGraph(String graphFileName){
-        return super.drawGraph(graphFileName);
+public class GraphDrawerMain extends GraphDrawerService {
+    public Graph drawGraph(String graphFileName) {
+	return super.drawGraph(graphFileName);
     }
 }

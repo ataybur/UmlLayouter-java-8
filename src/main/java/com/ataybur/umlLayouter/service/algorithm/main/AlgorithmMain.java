@@ -18,10 +18,10 @@ import com.ataybur.umlLayouter.service.algorithm.service.AlgorithmService;
 public class AlgorithmMain extends AlgorithmService {
 
     public List<Vertex> doAlgorithm(Graph graph) {
-        return super.doAlgorithm(graph);
+	return super.doAlgorithm(graph);
     }
 
     public Vertex moveTheVertexForAlgorithm(Vertex vertex, Force force) {
-        return super.moveTheVertexForAlgorithm(vertex, force);
+	return super.moveTheVertexForAlgorithm(vertex, force);
     }
 }

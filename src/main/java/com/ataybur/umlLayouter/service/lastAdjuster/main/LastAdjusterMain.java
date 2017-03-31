@@ -15,14 +15,14 @@ import com.ataybur.umlLayouter.service.lastAdjuster.service.LastAdjusterService;
 public class LastAdjusterMain extends LastAdjusterService {
 
     public Graph fitGraphIntoScreen(Graph graph, Integer screenSize) {
-        return super.fitGraphIntoScreen(graph, screenSize);
+	return super.fitGraphIntoScreen(graph, screenSize);
     }
 
     public Graph adjustGraph(Graph graph) {
-        return super.adjustGraph(graph);
+	return super.adjustGraph(graph);
     }
 
     public Coordinate getSumOfWidthAndHeightForBeyondPane(Graph graph) {
-        return super.getSumOfWidthAndHeightForBeyondPane(graph);
+	return super.getSumOfWidthAndHeightForBeyondPane(graph);
     }
 }

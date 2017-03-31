@@ -23,14 +23,14 @@ import com.ataybur.umlLayouter.service.graphMLReader.service.GraphMLReaderServic
 public class GraphMLReaderMain extends GraphMLReaderService {
 
     public Graph readGraphml(Graph newGraph, String filename, EdgeRelation edgeRelation) {
-        return super.readGraphml(newGraph, filename, edgeRelation);
+	return super.readGraphml(newGraph, filename, edgeRelation);
     }
 
     public String transform(String fileName, String xslFileName) throws TransformerConfigurationException, TransformerException, ParserConfigurationException, SAXException, IOException {
-        return super.transform(fileName, xslFileName);
+	return super.transform(fileName, xslFileName);
     }
 
     public Graph initiateGraph(Graph graph, Integer matrixUnitSize, Integer loopNumber) {
-        return super.initiateGraph(graph, matrixUnitSize, loopNumber);
+	return super.initiateGraph(graph, matrixUnitSize, loopNumber);
     }
 }

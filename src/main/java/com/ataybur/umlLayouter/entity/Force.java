@@ -14,34 +14,34 @@ public class Force {
     private Double Y;
 
     public Force() {
-        this.X = 0D;
-        this.Y = 0D;
+	this.X = 0D;
+	this.Y = 0D;
     }
-    
+
     public Force(Double X, Double Y) {
-        this.X = X;
-        this.Y = Y;
-    }        
+	this.X = X;
+	this.Y = Y;
+    }
 
     public Double getX() {
-        return X;
+	return X;
     }
 
     public void setX(Double X) {
-        this.X = X;
+	this.X = X;
     }
 
     public Double getY() {
-        return Y;
+	return Y;
     }
 
     public void setY(Double Y) {
-        this.Y = Y;
+	this.Y = Y;
     }
 
     @Override
     public String toString() {
-        return "X: "+X+", Y: "+Y;
+	return "X: " + X + ", Y: " + Y;
     }
-    
+
 }

@@ -18,43 +18,43 @@ public class Edge {
     }
 
     public Edge(Vertex firstPoint, Vertex secondPoint, Boolean isAssociated) {
-        firstVertexName = firstPoint.getName();
-        secondVertexName = secondPoint.getName();
-        this.isAssociated = isAssociated;
+	firstVertexName = firstPoint.getName();
+	secondVertexName = secondPoint.getName();
+	this.isAssociated = isAssociated;
     }
 
     public String getFirstVertexName() {
-        return firstVertexName;
+	return firstVertexName;
     }
 
     public void setFirstVertexName(String firstVertexName) {
-        this.firstVertexName = firstVertexName;
+	this.firstVertexName = firstVertexName;
     }
 
     public String getSecondVertexName() {
-        return secondVertexName;
+	return secondVertexName;
     }
 
     public void setSecondVertexName(String secondVertexName) {
-        this.secondVertexName = secondVertexName;
+	this.secondVertexName = secondVertexName;
     }
 
     public Boolean getIsAssociated() {
-        return isAssociated;
+	return isAssociated;
     }
 
     public void setIsAssociated(Boolean isAssociated) {
-        this.isAssociated = isAssociated;
+	this.isAssociated = isAssociated;
     }
 
     @Override
     public String toString() {
-        return this.firstVertexName + " -> " + this.secondVertexName +" : "+(isAssociated ? "Associated":"Generalized");
+	return this.firstVertexName + " -> " + this.secondVertexName + " : " + (isAssociated ? "Associated" : "Generalized");
     }
 
     @Override
     public boolean equals(Object obj) {
-        Edge edge = (Edge) obj;
-        return (this.firstVertexName.equalsIgnoreCase(edge.getFirstVertexName()) && this.secondVertexName.equalsIgnoreCase(edge.getSecondVertexName())) || (this.secondVertexName.equalsIgnoreCase(edge.getFirstVertexName()) && this.firstVertexName.equalsIgnoreCase(edge.getSecondVertexName()));
+	Edge edge = (Edge) obj;
+	return (this.firstVertexName.equalsIgnoreCase(edge.getFirstVertexName()) && this.secondVertexName.equalsIgnoreCase(edge.getSecondVertexName())) || (this.secondVertexName.equalsIgnoreCase(edge.getFirstVertexName()) && this.firstVertexName.equalsIgnoreCase(edge.getSecondVertexName()));
     }
 }

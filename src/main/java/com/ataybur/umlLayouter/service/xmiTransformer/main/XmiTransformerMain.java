@@ -11,8 +11,8 @@ import com.ataybur.umlLayouter.service.xmiTransformer.service.XmiTransformerServ
  *
  * @author atay
  */
-public class XmiTransformerMain extends XmiTransformerService{
+public class XmiTransformerMain extends XmiTransformerService {
     public Graph createGraph(String graphFileName) {
-       return super.createGraph(graphFileName);
+	return super.createGraph(graphFileName);
     }
 }

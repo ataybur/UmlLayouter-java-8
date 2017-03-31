@@ -19,42 +19,42 @@ public class Graph {
     private List<Edge> edgeList;
 
     public Graph() {
-        vertexList = new ArrayList<Vertex>();
-        edgeList = new ArrayList<Edge>();
+	vertexList = new ArrayList<Vertex>();
+	edgeList = new ArrayList<Edge>();
     }
 
     public Graph(Graph graph) {
-        ProjectConstants.VERTEX_COUNTER += 1;
-        vertexList = new ArrayList<Vertex>();
-        edgeList = new ArrayList<Edge>();
+	ProjectConstants.VERTEX_COUNTER += 1;
+	vertexList = new ArrayList<Vertex>();
+	edgeList = new ArrayList<Edge>();
 
-        for (Vertex vertex : graph.getVertexList()) {
-            vertexList.add(new Vertex(vertex));
-        }
+	for (Vertex vertex : graph.getVertexList()) {
+	    vertexList.add(new Vertex(vertex));
+	}
 
-        for (Edge edge : graph.getEdgeList()) {
-            edgeList.add(edge);
-        }
+	for (Edge edge : graph.getEdgeList()) {
+	    edgeList.add(edge);
+	}
     }
 
     public Graph(List<Vertex> vertexList) {
-        this.vertexList = vertexList;
-        this.edgeList = new ArrayList<Edge>();
+	this.vertexList = vertexList;
+	this.edgeList = new ArrayList<Edge>();
     }
 
     public List<Vertex> getVertexList() {
-        return vertexList;
+	return vertexList;
     }
 
     public void setVertexList(List<Vertex> vertexList) {
-        this.vertexList = vertexList;
+	this.vertexList = vertexList;
     }
 
     public List<Edge> getEdgeList() {
-        return edgeList;
+	return edgeList;
     }
 
     public void setEdgeList(List<Edge> edgeList) {
-        this.edgeList = edgeList;
+	this.edgeList = edgeList;
     }
 }
