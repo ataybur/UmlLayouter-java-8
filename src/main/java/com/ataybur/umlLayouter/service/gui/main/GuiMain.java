@@ -5,11 +5,14 @@ package com.ataybur.umlLayouter.service.gui.main;
  */
 import java.applet.Applet;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Locale;
 
 import javax.swing.BoxLayout;
+import javax.swing.JApplet;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -19,21 +22,16 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import org.jgraph.JGraph;
-import org.jgrapht.ListenableGraph;
-import org.jgrapht.ext.JGraphModelAdapter;
-import org.jgrapht.graph.ListenableDirectedGraph;
 
+import com.ataybur.umlLayouter.service.gui.service.CustomJGraph;
 import com.ataybur.umlLayouter.service.gui.service.GuiService;
 import com.ataybur.umlLayouter.util.ProjectConstants;
 
-public class GuiMain extends GuiService {
+public class GuiMain extends JApplet {
 
-    /**
-     * 
-     */
-    private static final long serialVersionUID = 1L;
-    private JGraphModelAdapter<String, String> m_jgAdapter;
-    private ListenableGraph<String, String> g;
+    private static final long serialVersionUID = 8026973495523095685L;
+    
+    private CustomJGraph jgraph;
     private JButton open = new JButton("Aç");
     private JButton retry = new JButton("Tekrar");
     private JButton screenShot = new JButton("Ekran Görüntüsü Al");
@@ -46,8 +44,9 @@ public class GuiMain extends GuiService {
     private JLabel matrixUnitSizeButtonLabel = new JLabel("Grid Kenar Boyu");
     private JTextField repeatNumberForPaneButton = new JTextField(3);
     private JLabel repeatNumberForPaneButtonLabel = new JLabel("Çizge Paneli İçin Tekrar Sayısı");
-    private JGraph jgraph;
     private String graphFileName;
+    
+    private GuiService guiService = new GuiService();
 
     /**
      * @see java.applet.Applet#init().
@@ -69,9 +68,6 @@ public class GuiMain extends GuiService {
     }
 
     private void fillContent() {
-	g = new ListenableDirectedGraph<String, String>(String.class);
-	m_jgAdapter = new JGraphModelAdapter<String, String>(g);
-	jgraph = new JGraph(m_jgAdapter);
 	adjustDisplaySettings(jgraph);
 	getContentPane().add(jgraph);
 	resize(ProjectConstants.DEFAULT_SIZE);
@@ -111,14 +107,14 @@ public class GuiMain extends GuiService {
 	    // g = new ListenableDirectedGraph(DefaultEdge.class);
 	    // m_jgAdapter = new JGraphModelAdapter(g);
 	    // fillContent();
-	    handleGraphFile(graphFileName, g, m_jgAdapter);
+	    handleGraphFile(graphFileName, jgraph);
 	}
     }
 
     class RetryL implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
-	    handleGraphFile(graphFileName, g, m_jgAdapter);
+	    handleGraphFile(graphFileName, jgraph);
 	}
     }
 
@@ -191,10 +187,42 @@ public class GuiMain extends GuiService {
 	    if (targetFile.contains(".")) {
 		extension = targetFile.substring(targetFile.lastIndexOf(".") + 1);
 	    }
-	    makePanelImage(jgraph, targetFile, extension);
+	    guiService.makePanelImage(jgraph, targetFile, extension);
 	}
     }
 
+    private void adjustDisplaySettings(JGraph jg) {
+	jg.setPreferredSize(ProjectConstants.DEFAULT_SIZE);
+	jg.setEnabled(true);
+	jg.setEditable(true);
+	jg.setMoveable(true);
+	jg.setMoveIntoGroups(true);
+	Color c = ProjectConstants.DEFAULT_BG_COLOR;
+	String colorStr = null;
+	try {
+	    colorStr = getParameter(ProjectConstants.BG_COLOR_PARAMETER);
+	} catch (Exception e) {
+	}
+
+	if (colorStr != null) {
+	    c = Color.decode(colorStr);
+	}
+
+	jg.setBackground(c);
+    }
+    
+    private void handleGraphFile(String graphFileName, CustomJGraph jgraph) {
+   	if (graphFileName == null) {
+   	    JOptionPane.showMessageDialog(this, "XMI dosyası seçilmedi!", "Uyarı", JOptionPane.WARNING_MESSAGE);
+   	    return;
+   	}
+   	if (!graphFileName.toUpperCase(Locale.ENGLISH).endsWith(".XMI")) {
+   	    JOptionPane.showMessageDialog(this, "Seçilen dosya XMI dosyası değil!", "Uyarı", JOptionPane.WARNING_MESSAGE);
+   	    return;
+   	}
+   	guiService.fillGraph(graphFileName, jgraph);
+       }
+    
     private void updateMatrixUnitSize() {
 	ProjectConstants.MATRIX_UNIT_SIZE = new Integer(matrixUnitSizeButton.getText());
     }
@@ -210,4 +238,6 @@ public class GuiMain extends GuiService {
     private void updateRepeatNumberForPane() {
 	ProjectConstants.REPEAT_NUMBER_FOR_PANE = new Integer(repeatNumberForPaneButton.getText());
     }
+    
+    
 }
