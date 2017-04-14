@@ -26,7 +26,7 @@ public class Vertex {
 
 	this.degree = vertex.getDegree();
     }
-
+    
     public String getName() {
 	return name;
     }

@@ -4,7 +4,7 @@
  */
 package com.ataybur.umlLayouter.service.xmiTransformer.main;
 
-import com.ataybur.umlLayouter.entity.Graph;
+import com.ataybur.umlLayouter.entity.CustomGraph;
 import com.ataybur.umlLayouter.service.xmiTransformer.service.XmiTransformerService;
 
 /**
@@ -12,7 +12,7 @@ import com.ataybur.umlLayouter.service.xmiTransformer.service.XmiTransformerServ
  * @author atay
  */
 public class XmiTransformerMain extends XmiTransformerService {
-    public Graph createGraph(String graphFileName) {
+    public CustomGraph createGraph(String graphFileName) {
 	return super.createGraph(graphFileName);
     }
 }

@@ -13,7 +13,7 @@ import javax.xml.transform.TransformerException;
 import org.xml.sax.SAXException;
 
 import com.ataybur.umlLayouter.entity.EdgeRelation;
-import com.ataybur.umlLayouter.entity.Graph;
+import com.ataybur.umlLayouter.entity.CustomGraph;
 import com.ataybur.umlLayouter.service.graphMLReader.service.GraphMLReaderService;
 
 /**
@@ -22,7 +22,7 @@ import com.ataybur.umlLayouter.service.graphMLReader.service.GraphMLReaderServic
  */
 public class GraphMLReaderMain extends GraphMLReaderService {
 
-    public Graph readGraphml(Graph newGraph, String filename, EdgeRelation edgeRelation) {
+    public CustomGraph readGraphml(CustomGraph newGraph, String filename, EdgeRelation edgeRelation) {
 	return super.readGraphml(newGraph, filename, edgeRelation);
     }
 
@@ -30,7 +30,7 @@ public class GraphMLReaderMain extends GraphMLReaderService {
 	return super.transform(fileName, xslFileName);
     }
 
-    public Graph initiateGraph(Graph graph, Integer matrixUnitSize, Integer loopNumber) {
+    public CustomGraph initiateGraph(CustomGraph graph, Integer matrixUnitSize, Integer loopNumber) {
 	return super.initiateGraph(graph, matrixUnitSize, loopNumber);
     }
 }

@@ -32,10 +32,14 @@ import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
 import com.ataybur.umlLayouter.entity.Coordinate;
+import com.ataybur.umlLayouter.entity.CustomGraph;
 import com.ataybur.umlLayouter.entity.Edge;
 import com.ataybur.umlLayouter.entity.EdgeRelation;
-import com.ataybur.umlLayouter.entity.Graph;
+import com.ataybur.umlLayouter.entity.EdgeValidator;
 import com.ataybur.umlLayouter.entity.Vertex;
+import com.ataybur.umlLayouter.entity.VertexUtilizer;
+import com.ataybur.umlLayouter.service.gui.service.EdgeList;
+import com.ataybur.umlLayouter.service.gui.service.VertexList;
 import com.ataybur.umlLayouter.util.ProjectConstants;
 import com.ataybur.umlLayouter.util.Utils;
 import com.google.common.base.Supplier;
@@ -45,12 +49,11 @@ import edu.uci.ics.jung.graph.DirectedSparseMultigraph;
 import edu.uci.ics.jung.io.GraphMLReader;
 
 /**
- *
  * @author atay
  */
 abstract public class GraphMLReaderService {
 
-    protected Graph readGraphml(Graph newGraph, String filename, EdgeRelation edgeRelation) {
+    protected CustomGraph readGraphml(CustomGraph newGraph, String filename, EdgeRelation edgeRelation) {
 	try {
 	    Supplier<Number> vertexFactory = new Supplier<Number>() {
 		int n = 0;
@@ -81,7 +84,7 @@ abstract public class GraphMLReaderService {
 	return null;
     }
 
-    private Graph convertGraphToMyGraph(DirectedGraph<Number, Number> graph, Graph newGraph, EdgeRelation edgeRelation) {
+    private CustomGraph convertGraphToMyGraph(DirectedGraph<Number, Number> graph, CustomGraph newGraph, EdgeRelation edgeRelation) {
 	return createGraph(newGraph, graph, edgeRelation);
     }
 
@@ -98,13 +101,13 @@ abstract public class GraphMLReaderService {
 	return fileName;
     }
 
-    public Graph initiateLayoutForGraph(Graph graph, Integer matrixUnitSize) {
+    public CustomGraph initiateLayoutForGraph(CustomGraph graph, Integer matrixUnitSize) {
 	System.out.println("----------createInitiatedGraph ");
 	List<Coordinate> matrix = createGridPlane(graph, matrixUnitSize);
 	return spreadIntoMatrix(graph, matrix, matrixUnitSize);
     }
 
-    public List<Coordinate> createGridPlane(Graph graph, Integer matrixUnitSize) {
+    public List<Coordinate> createGridPlane(CustomGraph graph, Integer matrixUnitSize) {
 	Integer matrixSize;
 	Double matrixSizeDouble;
 	List<Coordinate> matrix = new ArrayList<Coordinate>();
@@ -118,10 +121,10 @@ abstract public class GraphMLReaderService {
 	return matrix;
     }
 
-    public Graph spreadIntoMatrix(Graph graph, List<Coordinate> matrix, Integer matrixUnitSize) {
+    public CustomGraph spreadIntoMatrix(CustomGraph graph, List<Coordinate> matrix, Integer matrixUnitSize) {
 	List<Coordinate> matrixTemp = new ArrayList<Coordinate>(matrix);
-	List<Edge> invalidEdgeList = new ArrayList<Edge>();
-	List<Edge> assignedEdgeList = new ArrayList<Edge>();
+	EdgeList invalidEdgeList = new EdgeList();
+	EdgeList assignedEdgeList = new EdgeList();
 	for (Vertex vertex : graph.getVertexList()) {
 	    matrixTemp = generateRandomCoordinate(vertex, matrixTemp, assignedEdgeList, graph, invalidEdgeList);
 	    if (matrixTemp == null) {
@@ -137,7 +140,7 @@ abstract public class GraphMLReaderService {
 	return graph;
     }
 
-    private List<Coordinate> generateRandomCoordinate(Vertex vertex, List<Coordinate> matrixTemp, List<Edge> assignedEdgeList, Graph graph, List<Edge> invalidEdgeList) {
+    private List<Coordinate> generateRandomCoordinate(Vertex vertex, List<Coordinate> matrixTemp, EdgeList assignedEdgeList, CustomGraph graph, EdgeList invalidEdgeList) {
 	List<Coordinate> tempCoordinateList = new ArrayList<Coordinate>();
 	if (matrixTemp == null || (matrixTemp != null && matrixTemp.size() == 0)) {
 	    return null;
@@ -176,16 +179,16 @@ abstract public class GraphMLReaderService {
 
     }
 
-    private List<Edge> addEdge(List<Edge> assignedEdgeList, Vertex vertex, Graph graph, List<Edge> invalidEdgeList) {
-	List<Vertex> adjacentVertexList = Utils.returnAdjacentList(graph, vertex);
+    private EdgeList addEdge(EdgeList assignedEdgeList, Vertex vertex, CustomGraph graph, EdgeList invalidEdgeList) {
+	VertexList adjacentVertexList = graph.returnAdjacentList(vertex);
 	Edge newEdge;
 	for (Vertex adjacentVertex : adjacentVertexList) {
 	    // if (adjacentVertex.getCoordinate()) {
 	    boolean defaultEdgeType = false;
 	    newEdge = new Edge(vertex, adjacentVertex, defaultEdgeType);
-	    if (!Utils.isListContainEdge(assignedEdgeList, newEdge)) {
+	    if (!assignedEdgeList.isListContainEdge(newEdge)) {
 		assignedEdgeList.add(newEdge);
-		if (!Utils.isEdgeValid(newEdge, graph)) {
+		if (new EdgeValidator(newEdge, graph.getVertexList()).isNotValid()) {
 		    invalidEdgeList.add(newEdge);
 		    System.out.println("Invalid edge added!");
 		}
@@ -197,7 +200,7 @@ abstract public class GraphMLReaderService {
 	return assignedEdgeList;
     }
 
-    public Integer howManyIntersection(Graph graph) {
+    public Integer howManyIntersection(CustomGraph graph) {
 	Integer counter = 0;
 	for (Vertex vertex : graph.getVertexList()) {
 	    if (isConflictedWithGraph(vertex, graph.getEdgeList(), graph)) {
@@ -207,10 +210,10 @@ abstract public class GraphMLReaderService {
 	return counter;
     }
 
-    private Boolean isConflictedWithGraph(Vertex vertex, List<Edge> assignedEdgeList, Graph graph) {
+    private Boolean isConflictedWithGraph(Vertex vertex, EdgeList assignedEdgeList, CustomGraph graph) {
 	System.out.println("isConflictedWithGraph Starts ");
-	List<Edge> edgeListWithoutThisVertex = Utils.returnEdgeListWithoutThisVertex(graph.getEdgeList(), vertex);
-	List<Vertex> adjacentVertexList = Utils.returnAdjacentList(graph, vertex);
+	EdgeList edgeListWithoutThisVertex = graph.getEdgeList().returnEdgeListWithoutThisVertex(vertex);
+	VertexList adjacentVertexList = graph.returnAdjacentList(vertex);
 	// edgeListWithoutThisVertex.addAll(invalidEdgeList);
 	System.out.println("invalidEdgeList Starts ");
 	// for (Edge edge : invalidEdgeList) {
@@ -235,9 +238,9 @@ abstract public class GraphMLReaderService {
 	return false;
     }
 
-    protected Graph initiateGraph(Graph graph, Integer matrixUnitSize, Integer loopNumber) {
-	SortedMap<Integer, Graph> intersectionNumberMap = new TreeMap<Integer, Graph>();
-	Graph newGraph = null;
+    protected CustomGraph initiateGraph(CustomGraph graph, Integer matrixUnitSize, Integer loopNumber) {
+	SortedMap<Integer, CustomGraph> intersectionNumberMap = new TreeMap<Integer, CustomGraph>();
+	CustomGraph newGraph = null;
 	Integer howManyIntersection = 0;
 	for (int i = 0; i < loopNumber; i++) {
 	    newGraph = initiateLayoutForGraph(graph, matrixUnitSize);
@@ -266,11 +269,12 @@ abstract public class GraphMLReaderService {
 	return new File(filePath);
     }
 
-    private Graph createGraph(Graph graph, DirectedGraph<Number, Number> graphOrgin, EdgeRelation edgeRelation) {
-	graph.setVertexList(new ArrayList<Vertex>());
+    private CustomGraph createGraph(CustomGraph graph, DirectedGraph<Number, Number> graphOrgin, EdgeRelation edgeRelation) {
+	graph.setVertexList(new VertexList());
 	for (Object vertice : graphOrgin.getVertices()) {
 	    String verticeName = String.valueOf(vertice);
-	    graph.getVertexList().add(Utils.createVertex(verticeName.toString()));
+	    Vertex randomVertex = new VertexUtilizer(new Vertex(verticeName)).create();
+	    graph.getVertexList().add(randomVertex);
 	}
 
 	String first;
@@ -285,22 +289,22 @@ abstract public class GraphMLReaderService {
 	return graph;
     }
 
-    public void makeAdjacent(Vertex mainVertex, Vertex vertex, Graph graph, EdgeRelation edgeRelation) {
+    public void makeAdjacent(Vertex mainVertex, Vertex vertex, CustomGraph graph, EdgeRelation edgeRelation) {
 	// mainVertex.getAdjacentVertexList().add(vertex);
 	boolean isAssociated = edgeRelation.equals(EdgeRelation.ASSOCIATION);
 	graph.getEdgeList().add(new Edge(mainVertex, vertex, isAssociated));
 	// removeUnadjacent(mainVertex.getUnadjacentVertexList(), vertex);
     }
 
-    public void makeAdjacent(Vertex mainVertex, String vertexName, Graph graph, EdgeRelation edgeRelation) {
-	makeAdjacent(mainVertex, Utils.getVertexByName(vertexName, graph.getVertexList()), graph, edgeRelation);
+    public void makeAdjacent(Vertex mainVertex, String vertexName, CustomGraph graph, EdgeRelation edgeRelation) {
+	makeAdjacent(mainVertex, graph.getVertexList().getVertexByName(vertexName), graph, edgeRelation);
     }
 
-    public void makeAdjacent(String mainVertexName, String vertexName, Graph graph, EdgeRelation edgeRelation) {
-	makeAdjacent(Utils.getVertexByName(mainVertexName, graph.getVertexList()), Utils.getVertexByName(vertexName, graph.getVertexList()), graph, edgeRelation);
+    public void makeAdjacent(String mainVertexName, String vertexName, CustomGraph graph, EdgeRelation edgeRelation) {
+	makeAdjacent(graph.getVertexList().getVertexByName(mainVertexName), graph.getVertexList().getVertexByName(vertexName), graph, edgeRelation);
     }
 
-    public void makeAdjacent(String mainVertexName, Vertex vertex, Graph graph, EdgeRelation edgeRelation) {
-	makeAdjacent(Utils.getVertexByName(mainVertexName, graph.getVertexList()), vertex, graph, edgeRelation);
+    public void makeAdjacent(String mainVertexName, Vertex vertex, CustomGraph graph, EdgeRelation edgeRelation) {
+	makeAdjacent(graph.getVertexList().getVertexByName(mainVertexName), vertex, graph, edgeRelation);
     }
 }

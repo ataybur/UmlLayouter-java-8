@@ -18,8 +18,8 @@ public class Edge {
     }
 
     public Edge(Vertex firstPoint, Vertex secondPoint, Boolean isAssociated) {
-	firstVertexName = firstPoint.getName();
-	secondVertexName = secondPoint.getName();
+	this.firstVertexName = firstPoint.getName();
+	this.secondVertexName = secondPoint.getName();
 	this.isAssociated = isAssociated;
     }
 

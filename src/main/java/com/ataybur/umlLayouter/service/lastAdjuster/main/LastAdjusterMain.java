@@ -5,7 +5,7 @@
 package com.ataybur.umlLayouter.service.lastAdjuster.main;
 
 import com.ataybur.umlLayouter.entity.Coordinate;
-import com.ataybur.umlLayouter.entity.Graph;
+import com.ataybur.umlLayouter.entity.CustomGraph;
 import com.ataybur.umlLayouter.service.lastAdjuster.service.LastAdjusterService;
 
 /**
@@ -14,15 +14,15 @@ import com.ataybur.umlLayouter.service.lastAdjuster.service.LastAdjusterService;
  */
 public class LastAdjusterMain extends LastAdjusterService {
 
-    public Graph fitGraphIntoScreen(Graph graph, Integer screenSize) {
-	return super.fitGraphIntoScreen(graph, screenSize);
+    public CustomGraph fitGraphIntoScreen(CustomGraph graph) {
+	return super.fitGraphIntoScreen(graph);
     }
 
-    public Graph adjustGraph(Graph graph) {
+    public CustomGraph adjustGraph(CustomGraph graph) {
 	return super.adjustGraph(graph);
     }
 
-    public Coordinate getSumOfWidthAndHeightForBeyondPane(Graph graph) {
+    public Coordinate getSumOfWidthAndHeightForBeyondPane(CustomGraph graph) {
 	return super.getSumOfWidthAndHeightForBeyondPane(graph);
     }
 }

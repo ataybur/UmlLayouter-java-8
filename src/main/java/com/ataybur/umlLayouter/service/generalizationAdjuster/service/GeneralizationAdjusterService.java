@@ -6,11 +6,11 @@ package com.ataybur.umlLayouter.service.generalizationAdjuster.service;
 
 import java.util.List;
 
-import com.ataybur.umlLayouter.entity.Edge;
-import com.ataybur.umlLayouter.entity.Graph;
+import com.ataybur.umlLayouter.entity.CustomGraph;
 import com.ataybur.umlLayouter.entity.Vertex;
+import com.ataybur.umlLayouter.service.gui.service.EdgeList;
+import com.ataybur.umlLayouter.service.gui.service.VertexList;
 import com.ataybur.umlLayouter.util.ProjectConstants;
-import com.ataybur.umlLayouter.util.Utils;
 
 /**
  *
@@ -18,31 +18,30 @@ import com.ataybur.umlLayouter.util.Utils;
  */
 abstract public class GeneralizationAdjusterService {
 
-    protected void doLayoutForGeneralizedEdges(Graph graph) {
+    protected void doLayoutForGeneralizedEdges(CustomGraph graph) {
 	doLayoutForGeneralizedEdges(graph.getEdgeList(), graph.getVertexList());
-	List<String> parentList = Utils.returnParentList(graph.getEdgeList());
+	List<String> parentList = graph.getEdgeList().returnParentList();
 	for (String parent : parentList) {
 	    doCenteredParent(graph, parent);
 	}
     }
 
-    private void doLayoutForGeneralizedEdges(List<Edge> edgeList, List<Vertex> vertexList) {
-	List<String> parentList = Utils.returnParentList(edgeList);
+    private void doLayoutForGeneralizedEdges(EdgeList edgeList, VertexList vertexList) {
+	List<String> parentList = edgeList.returnParentList();
 	for (String parent : parentList) {
-	    Utils.setCoordinateToChild(edgeList, vertexList, parent);
+	    edgeList.setCoordinateToChild(vertexList, parent);
 	}
     }
 
-    private void doCenteredParent(Graph graph, String parent) {
-	List<Vertex> childrenList = Utils.returnChildVertices(graph.getEdgeList(), graph.getVertexList(), parent);
-
-	Vertex parentVertex = Utils.getVertexByName(parent, graph.getVertexList());
+    private void doCenteredParent(CustomGraph graph, String parent) {
+	VertexList childrenList = graph.getEdgeList().returnChildVertices(graph.getVertexList(), parent);
+	Vertex parentVertex = graph.getVertexList().getVertexByName(parent);
 	Double unitSize = new Double(ProjectConstants.MATRIX_UNIT_SIZE);
 
 	Double ordinate = parentVertex.getCoordinate().getY();
 	boolean isFirst = true;
 
-	Double tempOrdinate = Utils.returnMinOrdinate(childrenList);
+	Double tempOrdinate = childrenList.returnMinOrdinate();
 	ordinate = tempOrdinate;
 	// parentVertex.getCoordinate().setX(newX);
 

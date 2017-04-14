@@ -14,12 +14,11 @@ import javax.xml.transform.TransformerException;
 
 import org.xml.sax.SAXException;
 
+import com.ataybur.umlLayouter.entity.CustomGraph;
 import com.ataybur.umlLayouter.entity.EdgeRelation;
-import com.ataybur.umlLayouter.entity.Graph;
 import com.ataybur.umlLayouter.entity.Vertex;
 import com.ataybur.umlLayouter.service.graphMLReader.main.GraphMLReaderMain;
 import com.ataybur.umlLayouter.util.ProjectConstants;
-import com.ataybur.umlLayouter.util.Utils;
 
 /**
  *
@@ -27,9 +26,9 @@ import com.ataybur.umlLayouter.util.Utils;
  */
 abstract public class XmiTransformerService {
 
-    protected Graph createGraph(String graphFileName) {
+    protected CustomGraph createGraph(String graphFileName) {
 	try {
-	    Graph newGraph = new Graph();
+	    CustomGraph newGraph = new CustomGraph();
 	    newGraph = fillGraphByXSLT(newGraph, graphFileName, EdgeRelation.HIERARCHICAL);
 	    newGraph = fillGraphByXSLT(newGraph, graphFileName, EdgeRelation.ASSOCIATION);
 	    newGraph = adjustVertexDegree(newGraph);
@@ -48,7 +47,7 @@ abstract public class XmiTransformerService {
 	return null;
     }
 
-    private Graph fillGraphByXSLT(Graph newGraph, String graphFileName, EdgeRelation edgeRelation) throws TransformerConfigurationException, TransformerException, ParserConfigurationException, SAXException, IOException {
+    private CustomGraph fillGraphByXSLT(CustomGraph newGraph, String graphFileName, EdgeRelation edgeRelation) throws TransformerConfigurationException, TransformerException, ParserConfigurationException, SAXException, IOException {
 	String filename = ProjectConstants.XSLT_PATH + edgeRelation.getXsltFileName();
 	GraphMLReaderMain graphMLReaderMain = new GraphMLReaderMain();
 	filename = graphMLReaderMain.transform(graphFileName, filename);
@@ -56,9 +55,10 @@ abstract public class XmiTransformerService {
 	return newGraph;
     }
 
-    private Graph adjustVertexDegree(Graph graph) {
+    private CustomGraph adjustVertexDegree(CustomGraph graph) {
 	for (Vertex vertex : graph.getVertexList()) {
-	    vertex.setDegree(Utils.returnAdjacentStringList(graph.getEdgeList(), vertex).size());
+	    Integer degree = graph.getEdgeList().returnAdjacentStringList(vertex).size();
+	    vertex.setDegree(degree);
 	}
 	return graph;
     }

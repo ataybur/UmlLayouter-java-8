@@ -28,4 +28,6 @@ public class ProjectConstants {
     public static final Integer GRID_PLANE_CONSTANT = 2;
     public static final Double RANDOM_CONSTANT = 0D;
     public static int VERTEX_COUNTER = 0;
+    public static final String GRAPH_FILE_NAME_STRING = "GRAPH_FILE_NAME";
 }
+

@@ -23,16 +23,16 @@ import javax.swing.JTextField;
 
 import org.jgraph.JGraph;
 
+import com.ataybur.umlLayouter.service.gui.components.OpenButton;
 import com.ataybur.umlLayouter.service.gui.service.CustomJGraph;
-import com.ataybur.umlLayouter.service.gui.service.GuiService;
 import com.ataybur.umlLayouter.util.ProjectConstants;
+import com.ataybur.umlLayouter.util.SimpleCache;
 
 public class GuiMain extends JApplet {
 
     private static final long serialVersionUID = 8026973495523095685L;
-    
-    private CustomJGraph jgraph;
-    private JButton open = new JButton("Aç");
+
+    private CustomJGraph jGraph;
     private JButton retry = new JButton("Tekrar");
     private JButton screenShot = new JButton("Ekran Görüntüsü Al");
     private JButton openDialog = new JButton("Ayarlar");
@@ -44,21 +44,22 @@ public class GuiMain extends JApplet {
     private JLabel matrixUnitSizeButtonLabel = new JLabel("Grid Kenar Boyu");
     private JTextField repeatNumberForPaneButton = new JTextField(3);
     private JLabel repeatNumberForPaneButtonLabel = new JLabel("Çizge Paneli İçin Tekrar Sayısı");
-    private String graphFileName;
-    
-    private GuiService guiService = new GuiService();
+//    private String graphFileName;
+//    private CdiContext context = CdiContext.INSTANCE;
+    private SimpleCache simpleCache = SimpleCache.INSTANCE;
 
     /**
      * @see java.applet.Applet#init().
      */
     public void init() {
 	// create a JGraphT graph
-	graphFileName = null;
+//	graphFileName = null;
+	jGraph = new CustomJGraph();
+	simpleCache.put(ProjectConstants.GRAPH_FILE_NAME_STRING, null);
 	JPanel p = new JPanel();
 	openDialog.addActionListener(new GuiMain.OpenDialogL());
 	p.add(openDialog);
-	open.addActionListener(new GuiMain.OpenL());
-	p.add(open);
+	p.add(new OpenButton(this, jGraph));
 	retry.addActionListener(new GuiMain.RetryL());
 	p.add(retry);
 	screenShot.addActionListener(new GuiMain.ScreenShotL());
@@ -68,8 +69,8 @@ public class GuiMain extends JApplet {
     }
 
     private void fillContent() {
-	adjustDisplaySettings(jgraph);
-	getContentPane().add(jgraph);
+	adjustDisplaySettings(jGraph);
+	getContentPane().add(jGraph);
 	resize(ProjectConstants.DEFAULT_SIZE);
     }
 
@@ -90,31 +91,40 @@ public class GuiMain extends JApplet {
 	}
     }
 
-    class OpenL implements ActionListener {
-
-	public void actionPerformed(ActionEvent e) {
-	    JFileChooser c = new JFileChooser();
-	    int rVal = c.showOpenDialog(GuiMain.this);
-	    if (rVal == JFileChooser.APPROVE_OPTION) {
-		graphFileName = c.getSelectedFile().getAbsolutePath();
-	    }
-	    if (rVal == JFileChooser.CANCEL_OPTION) {
-		if (graphFileName != null) {
-		    return;
-		}
-		graphFileName = null;
-	    }
-	    // g = new ListenableDirectedGraph(DefaultEdge.class);
-	    // m_jgAdapter = new JGraphModelAdapter(g);
-	    // fillContent();
-	    handleGraphFile(graphFileName, jgraph);
-	}
-    }
+//    class OpenL implements ActionListener {
+//
+//	public void actionPerformed(ActionEvent e) {
+//	    JFileChooser c = new JFileChooser();
+//	    int rVal = c.showOpenDialog(GuiMain.this);
+//	    String graphFileName = null;
+//	    if (rVal == JFileChooser.APPROVE_OPTION) {
+//		graphFileName = c.getSelectedFile().getAbsolutePath();
+//	    }
+//	    if (rVal == JFileChooser.CANCEL_OPTION) {
+//		if (graphFileName != null) {
+//		    return;
+//		}
+//		graphFileName = null;
+//	    }
+//	    // g = new ListenableDirectedGraph(DefaultEdge.class);
+//	    // m_jgAdapter = new JGraphModelAdapter(g);
+//	    // fillContent();
+//	    boolean isAppropiedFileName = controlGraphFileName(graphFileName);
+//	    if (isAppropiedFileName) {
+//		jgraph.fillGraph(graphFileName);
+//		simpleCache.put(ProjectConstants.GRAPH_FILE_NAME_STRING, graphFileName);
+//	    }
+//	}
+//    }
 
     class RetryL implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
-	    handleGraphFile(graphFileName, jgraph);
+	    String graphFileName = simpleCache.getString(ProjectConstants.GRAPH_FILE_NAME_STRING);
+	    boolean isAppropiedFileName = controlGraphFileName(graphFileName);
+	    if (isAppropiedFileName) {
+		jGraph.fillGraph(graphFileName);
+	    }
 	}
     }
 
@@ -187,7 +197,7 @@ public class GuiMain extends JApplet {
 	    if (targetFile.contains(".")) {
 		extension = targetFile.substring(targetFile.lastIndexOf(".") + 1);
 	    }
-	    guiService.makePanelImage(jgraph, targetFile, extension);
+	    jGraph.makePanelImage(targetFile, extension);
 	}
     }
 
@@ -210,19 +220,19 @@ public class GuiMain extends JApplet {
 
 	jg.setBackground(c);
     }
-    
-    private void handleGraphFile(String graphFileName, CustomJGraph jgraph) {
-   	if (graphFileName == null) {
-   	    JOptionPane.showMessageDialog(this, "XMI dosyası seçilmedi!", "Uyarı", JOptionPane.WARNING_MESSAGE);
-   	    return;
-   	}
-   	if (!graphFileName.toUpperCase(Locale.ENGLISH).endsWith(".XMI")) {
-   	    JOptionPane.showMessageDialog(this, "Seçilen dosya XMI dosyası değil!", "Uyarı", JOptionPane.WARNING_MESSAGE);
-   	    return;
-   	}
-   	guiService.fillGraph(graphFileName, jgraph);
-       }
-    
+
+    public boolean controlGraphFileName(String graphFileName) {
+	boolean result = true;
+	if (graphFileName == null) {
+	    JOptionPane.showMessageDialog(this, "XMI dosyası seçilmedi!", "Uyarı", JOptionPane.WARNING_MESSAGE);
+	    result = false;
+	} else if (!graphFileName.toUpperCase(Locale.ENGLISH).endsWith(".XMI")) {
+	    JOptionPane.showMessageDialog(this, "Seçilen dosya XMI dosyası değil!", "Uyarı", JOptionPane.WARNING_MESSAGE);
+	    result = false;
+	}
+	return result;
+    }
+
     private void updateMatrixUnitSize() {
 	ProjectConstants.MATRIX_UNIT_SIZE = new Integer(matrixUnitSizeButton.getText());
     }
@@ -238,6 +248,5 @@ public class GuiMain extends JApplet {
     private void updateRepeatNumberForPane() {
 	ProjectConstants.REPEAT_NUMBER_FOR_PANE = new Integer(repeatNumberForPaneButton.getText());
     }
-    
-    
+
 }
