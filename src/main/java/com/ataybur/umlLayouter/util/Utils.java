@@ -1,5 +1,8 @@
 package com.ataybur.umlLayouter.util;
 
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import com.ataybur.umlLayouter.entity.CustomGraph;
 import com.ataybur.umlLayouter.entity.Edge;
 import com.ataybur.umlLayouter.entity.Force;
@@ -24,6 +27,17 @@ public class Utils {
 	return result;
     }
 
+    /*
+     * ?
+     * */
+    public static Boolean areLinesValid(Line... lineArg){
+	return !Stream.of(lineArg) //
+		.map(LineValidator::new) //
+		.map(LineValidator::isNotValid) //
+		.collect(Collectors.toList()) //
+		.contains(Boolean.FALSE);
+    }
+    
     public static Boolean areThereConflictedLines(Line firstLine, Line secondLine) {
 	if (new LineValidator(firstLine).isNotValid() || new LineValidator(secondLine).isNotValid()) {
 	    /*
